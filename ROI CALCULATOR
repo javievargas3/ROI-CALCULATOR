@@ -1,0 +1,77 @@
+class Calculator():
+    def __init__(self):
+        self.incomes=0
+        self.expenses=0
+        self.cashflows=0
+        self.rois=0
+    def income(self):
+    
+        rental_income = int(input("What is your Rental Income? "))
+        laundry_income = int(input("What is your laundry income? "))
+        other = int(input("Any other income? "))
+        income_total = rental_income + laundry_income + other
+        print(f'your total rental income is ${income_total}')
+        self.incomes = income_total
+        
+    def expense(self):
+        expense_tax = int(input("How much will pay in taxes monthly? "))
+        expense_insurance = int(input("What is your insurance cost? "))
+        print("Will you pay for any of the utilities")
+        expense_utilities = input("If you're paying type in 'yes' else type 'no'.  ")
+        if expense_utilities.lower() == "yes":
+            expense_electric = int(input("What are the electric expenses (monthly)? "))
+            expense_water =int(input("What are the water expenses(monthly)? "))
+            expense_sewer = int(input("What are the sewer expenses(monthly)? "))
+            expense_gas = int(input("What are the water expenses(monthly)? "))
+            total_utilities = expense_electric + expense_water + expense_sewer + expense_gas
+            print(f"\n Total monthly utility expenses are ${total_utilities}")
+        else:
+            total_utilities = 0
+            print("Nothing to pay in utilities lucky!!")
+        print("\n I still have a few more monthly expense questions.")
+        expense_hoa = int(input("What are the HOA expenses? "))
+        expense_repairs = int(input("What are the your monthly expenses in repairs? "))
+        expense_propertymanagement = int(input("How much will you be paying property management (monthly)? "))
+        expense_mortgage = int(input("What's your monthly mortgage? "))
+        expense_total = expense_tax + expense_insurance + total_utilities + expense_hoa + expense_repairs + expense_propertymanagement + expense_mortgage
+        self.expenses = expense_total
+        
+        print(f'Your total expenses are ${expense_total}')
+    def cashflow(self):
+        self.cashflows = self.incomes - self.expenses
+        total_cashflow = self.cashflows
+        print(f"Your total monthly cashflow is ${total_cashflow}")
+
+    def roi(self):
+        print('hi')
+        roi_downpayment = int(input("How much is your downpayment? "))
+        roi_closingcost = int(input("What are your closing costs? "))
+        roi_rehabbudget = int(input("What's your total budget to fix or change the unit or house ? "))
+        roi_miscother = int(input("how much in other misscelaneous? "))
+        total_investment = roi_downpayment + roi_closingcost + roi_rehabbudget + roi_miscother
+        print(f"Your investment total is ${total_investment}")
+        
+        annual_total_flow = self.cashflows * 12
+        
+        self.roiss = (annual_total_flow/total_investment)*100
+        rois = self.rois
+        print(f"\n \n Your total cash is $ {rois}%")
+
+ROICalculator = Calculator()  
+
+def run():
+    while True:
+        print("\n\nWelcome to the ROI calculator")
+        response = input("To begin, please type 'income'or 'quit' to quit lol  ")
+        
+        if response.lower() == 'income':
+            print("First is Rental Income? ")
+            ROICalculator.income()
+            print("\n Second is Rental expenses total ")
+            ROICalculator.expense()
+            print("\nthird is your total cashflow")
+            ROICalculator.cashflow()
+            print("\n\nand last is to calculate your roi")
+            ROICalculator.roi()
+
+run()
